@@ -12,6 +12,7 @@ use App\Models\Employee;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -67,6 +68,7 @@ class EmployeeResource extends Resource
                         })
                         ->required()
                         ->reactive(), */
+                    FileUpload::make('image')->image(),
                     Select::make('department_id',)
                         ->relationship('department','name')->required(),
                     TextInput::make('first_name')->required()->maxLength(255),
