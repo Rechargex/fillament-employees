@@ -29,7 +29,7 @@ class EmployeesRelationManager extends RelationManager
         ->schema([
             Card::make()
                 ->schema([
-                    Select::make('country_id',)
+                    /* Select::make('country_id',)
                         ->label('Country')
                         ->options(Country::all()->pluck('name','id')->toArray())
                         ->required()
@@ -57,12 +57,17 @@ class EmployeesRelationManager extends RelationManager
                             return $state->cities()->pluck('name','id')->toArray();
                         })
                         ->required()
-                        ->reactive(),
+                        ->reactive(), */
                     TextInput::make('first_name')->required()->maxLength(255),
+                    TextInput::make('middle_name')->required()->maxLength(255),
                     TextInput::make('last_name')->required()->maxLength(255),
+                    DatePicker::make('birth_date')->required(),
+                    TextInput::make('age')->required()->maxLength(255),
+                    TextInput::make('gender')->required()->maxLength(255),
+                    TextInput::make('phone')->required()->maxLength(255),
+                    TextInput::make('nationality')->required()->maxLength(255),
                     TextInput::make('address')->required()->maxLength(255),
                     TextInput::make('zip_code')->required()->maxLength(5),
-                    DatePicker::make('birth_date')->required(),
                     DatePicker::make('date_hired')->required(),
                 ])
         ]);

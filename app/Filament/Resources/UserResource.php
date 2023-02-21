@@ -51,7 +51,7 @@ class UserResource extends Resource
                     ->label('Confirm Password')
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                     ->dehydrated(false),
-            ])
+            ])->columns(2)
         ]);
     }
 
@@ -62,7 +62,7 @@ class UserResource extends Resource
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('created_at')->dateTime()
+                TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
                 //

@@ -11,17 +11,24 @@ class Employee extends Model
 
     protected $fillable = [
         'first_name',
+        'middle_name',/** */
         'last_name',
+        'birth_date',
+        'age',
+        'gender',
+        'phone',
+        'nationality',
         'address',
-        'city_id',
-        'state_id',
-        'country_id',
+        // 'city_id',
+        // 'state_id',
+        // 'country_id',
         'department_id',
         'zip_code',
-        'birth_date',
+        // 'sssId',
+        // 'tinId',
         'date_hired'
     ];
-    public function country()
+    /* public function country()
     {
         return $this->belongsTo(Country::class);
     }
@@ -32,7 +39,7 @@ class Employee extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
-    }
+    } */
     public function department()
     {
         return $this->belongsTo(Department::class);

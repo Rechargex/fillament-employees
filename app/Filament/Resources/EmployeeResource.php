@@ -5,13 +5,14 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EmployeeResource\Pages;
 use App\Filament\Resources\EmployeeResource\RelationManagers;
 use App\Filament\Resources\EmployeeResource\Widgets\EmployeeStatsOverview;
-use App\Models\City;
-use App\Models\Country;
+// use App\Models\City;
+// use App\Models\Country;
 use App\Models\Employee;
-use App\Models\State;
+// use App\Models\State;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -35,7 +36,9 @@ class EmployeeResource extends Resource
         ->schema([
             Card::make()
                 ->schema([
-                    Select::make('country_id',)
+                    Grid::make(3)
+                    ->schema([
+                    /* Select::make('country_id',)
                         ->label('Country')
                         ->options(Country::all()->pluck('name','id')->toArray())
                         ->required()
@@ -63,15 +66,21 @@ class EmployeeResource extends Resource
                             return $state->cities()->pluck('name','id')->toArray();
                         })
                         ->required()
-                        ->reactive(),
+                        ->reactive(), */
                     Select::make('department_id',)
                         ->relationship('department','name')->required(),
                     TextInput::make('first_name')->required()->maxLength(255),
+                    TextInput::make('middle_name')->required()->maxLength(255),
                     TextInput::make('last_name')->required()->maxLength(255),
+                    DatePicker::make('birth_date')->required(),
+                    TextInput::make('age')->required()->maxLength(255),
+                    TextInput::make('gender')->required()->maxLength(255),
+                    TextInput::make('phone')->required()->maxLength(255),
+                    TextInput::make('nationality')->required()->maxLength(255),
                     TextInput::make('address')->required()->maxLength(255),
                     TextInput::make('zip_code')->required()->maxLength(5),
-                    DatePicker::make('birth_date')->required(),
                     DatePicker::make('date_hired')->required(),
+                    ])
                 ])
         ]);
     }
@@ -89,7 +98,7 @@ class EmployeeResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('department')->relationship('department', 'name'),
-                SelectFilter::make('country')->relationship('country', 'name')
+                // SelectFilter::make('country')->relationship('country', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
