@@ -10,7 +10,7 @@ class Employee extends Model
     use HasFactory;
 
     protected $fillable = [
-        // 'image',
+        'image',
         'first_name',
         'middle_name',/** */
         'last_name',
@@ -25,9 +25,10 @@ class Employee extends Model
         // 'country_id',
         'department_id',
         'zip_code',
-        'sssId',
-        'tinId',
-        'philHealthId',
+        'sss_id',
+        'tin_id',
+        'pagibig_id',
+        'philhealth_id',
         'date_hired'
     ];
     /* public function country()

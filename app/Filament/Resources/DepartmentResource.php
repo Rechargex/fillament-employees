@@ -34,6 +34,7 @@ class DepartmentResource extends Resource
                     TextInput::make('name')
                         ->required()
                         ->maxLength(255)
+                        ->unique()
                 ])
             ]);
     }

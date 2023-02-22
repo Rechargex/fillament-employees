@@ -81,6 +81,10 @@ class EmployeeResource extends Resource
                     TextInput::make('nationality')->required()->maxLength(255),
                     TextInput::make('address')->required()->maxLength(255),
                     TextInput::make('zip_code')->required()->maxLength(5),
+                    TextInput::make('tin_id')->required()->maxLength(255),
+                    TextInput::make('sss_id')->required()->maxLength(255),
+                    TextInput::make('philhealth_id')->required()->maxLength(255),
+                    TextInput::make('pagibig_id')->required()->maxLength(255),
                     DatePicker::make('date_hired')->required(),
                     ])
                 ])

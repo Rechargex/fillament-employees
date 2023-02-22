@@ -7,6 +7,7 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Pages\CreateRecord;
@@ -23,9 +24,9 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationGroup = 'User Management';
-
+    protected static ?int $navigationSort = 1;
     public static function form(Form $form): Form
     {
         return $form
@@ -51,6 +52,12 @@ class UserResource extends Resource
                     ->label('Confirm Password')
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                     ->dehydrated(false),
+                Select::make('roles')
+                    ->multiple()
+                    ->relationship('roles', 'name')->preload(),
+                Select::make('permissions')
+                    ->multiple()
+                    ->relationship('permissions', 'name')->preload()
             ])->columns(2)
         ]);
     }
@@ -59,16 +66,17 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable(),
+                // TextColumn::make('id')->sortable(),
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
