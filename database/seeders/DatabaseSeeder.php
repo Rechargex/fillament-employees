@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\Role as ModelsRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Contracts\Role as ContractsRole;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -43,7 +44,9 @@ class DatabaseSeeder extends Seeder
         $user1->assignRole($role1);
         $user2->assignRole($role2);
         $user3->assignRole($role3);
-       
+
+        
+
 
 
         // Department::factory(10)->create();

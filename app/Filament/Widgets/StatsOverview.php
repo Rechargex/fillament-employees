@@ -11,16 +11,16 @@ class StatsOverview extends BaseWidget
 {
     protected function getCards(): array
     {
-            $react = Department::where('name', 'React')->withCount('employees')->first();
-        $vues = Department::where('name', 'Vues')->withCount('employees')->first();
-        $laravel = Department::where('name', 'Laravel')->withCount('employees')->first();
+        
+        $frontOffice = Department::where('name', 'Front Office')->withCount('employees')->first();
+        $accounts = Department::where('name', 'Accounts')->withCount('employees')->first();
+        $food = Department::where('name', 'Food & Beverages')->withCount('employees')->first();
         return [
             Card::make('All Employees', Employee::all()->count()),
-            // Card::make('US Employees', $us ? $us->employees_count : 0),
-            // Card::make('PH Employees', $ph ? $ph->employees_count : 0),
-            Card::make('React Employees', $react ? $react->employees_count : 0),
-            Card::make('Vues Employees', $vues ? $vues->employees_count : 0),
-            Card::make('Laravel Employees', $laravel ? $laravel->employees_count : 0),
+            
+            Card::make('Front Office Employees', $frontOffice ? $frontOffice->employees_count : 0),
+            Card::make('Accounts Employees', $accounts ? $accounts->employees_count : 0),
+            Card::make('Food & Beverages Employees', $food ? $food->employees_count : 0),
         ];
     }
 }

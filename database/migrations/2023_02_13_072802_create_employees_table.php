@@ -30,10 +30,10 @@ return new class extends Migration
             $table->string('nationality');
             $table->string('address');
             $table->char('zip_code');
-            $table->integer('tin_id');
-            $table->integer('sss_id');
-            $table->integer('philhealth_id');
-            $table->integer('pagibig_id');
+            $table->string('tin_id');
+            $table->string('sss_id');
+            $table->string('philhealth_id');
+            $table->string('pagibig_id');
             $table->date('date_hired');
             $table->timestamps();
         });
